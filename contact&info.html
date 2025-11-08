@@ -1,0 +1,772 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Reset.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Vina+Sans&display=swap"
+    rel="stylesheet">
+  <title>Information</title>
+</head>
+
+<style>
+  /* MAIN CONTENT FIX */
+  .main {
+    display: block !important;
+    padding-top: clamp(10px, 7vh, 80px);
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .content {
+    display: block !important;
+    width: 100%;
+  }
+
+  /* Ensure all sections flow continuously */
+  section,
+  article {
+    display: block !important;
+    width: 100%;
+    max-width: 100vw; /* Prevent overflow */
+    box-sizing: border-box;
+  }
+
+  /* FIX: Better padding for all screen sizes */
+  .main p,
+  h1,
+  h2 {
+    padding: 10px clamp(20px, 5vw, 90px); /* Responsive padding */
+    word-spacing: 2px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  /* MAIN SECTION FIX */
+  .main section:first-child {
+    padding: 15vh 5vw !important;
+    background-size: cover !important;
+    background-position: center !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .main section:first-child h2 {
+    font-size: clamp(2rem, 8vw, 9vh) !important;
+    padding: 0 !important;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    max-width: 100%;
+  }
+
+  .main section:first-child p {
+    font-size: clamp(1rem, 4vw, 5vh) !important;
+    padding: 0 !important;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  /* FIXED IMAGE SCROLLER - Single line scrolling */
+  .image-scroller {
+    width: 100%;
+    overflow: hidden !important;
+    position: relative;
+    background: linear-gradient(beige, rgb(240, 221, 189));
+    padding: 30px 0;
+    box-sizing: border-box;
+  }
+
+  .scroll-track {
+    display: flex;
+    width: max-content;
+    animation: scrollLoop 40s linear infinite;
+    overflow: hidden !important;
+    gap: 20px;
+  }
+
+  .scroll-track img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  @keyframes scrollLoop {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-300px * 6 - 20px * 6));
+    }
+  }
+
+  hr.divider {
+    border: none;
+    height: 10vh;
+    background: linear-gradient(rgb(240, 221, 189), #a58a75);
+    width: 100%;
+    position: relative;
+    margin: 0;
+    display: block;
+  }
+
+  .text-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px clamp(15px, 3vw, 2vw); /* Responsive padding */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .column {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 20px;
+    color: #ffffff;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 12px #a56c3e;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .column:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 20px #753c0d;
+  }
+
+  .avatar {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 15px;
+    border-radius: 50%;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .username {
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #5f452f;
+  }
+
+  .comment {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Fix for History section layout */
+  .history {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    grid-template-rows: auto 1fr !important;
+    gap: 30px !important;
+    align-items: start !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .history h1 {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .history>div:first-of-type {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  .history aside {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: start !important;
+  }
+
+  .history p {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    line-height: 1.7 !important;
+    font-size: 1.1rem !important;
+    color: #5f594b !important;
+    max-width: 100%;
+  }
+
+  /* Ensure proper text flow */
+  .history>div:first-of-type p {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* About section layout - REVERSED from History */
+  .about {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr !important;
+    grid-template-rows: auto 1fr !important;
+    gap: 30px !important;
+    align-items: start !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .about h1 {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .about aside {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: start !important;
+  }
+
+  .about p {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    line-height: 1.7 !important;
+    font-size: 1.1rem !important;
+    color: #174350 !important;
+    max-width: 100%;
+  }
+
+  /* FIXED Mission/Vision section - Proper two columns on desktop */
+  .mission-vision {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5vw !important;
+    align-items: start !important;
+    justify-items: center !important;
+    padding: 20vh clamp(20px, 5vw, 10vw) !important; /* Better padding */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mission-vision h2 {
+    font-family: Vina Sans, sans-serif !important;
+    color: #5f594b !important;
+    margin-bottom: 1rem !important;
+    text-align: center !important;
+    font-size: 2rem !important;
+  }
+
+  .mission-vision p {
+    color: #5f594b !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    font-size: 1.1rem !important;
+    max-width: 100%;
+  }
+
+  /* REVIEWS SECTION FIX */
+  .review article>div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .text-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .map {
+    width: 100%;
+    height: 400px;
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+
+  /* === ENHANCED RESPONSIVE DESIGN === */
+
+  /* Large Desktops (1400px+) - Your exact design maintained */
+  @media (min-width: 1201px) {
+    /* Your desktop design remains perfectly intact */
+  }
+
+  /* Tablet (max-width 992px) */
+  @media (max-width: 992px) {
+
+    .main p,
+    .main h1,
+    .main h2 {
+      padding: 10px clamp(20px, 4vw, 40px); /* Better responsive padding */
+    }
+
+    /* PARENT: History section - convert to vertical layout */
+    .history {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto auto auto !important;
+      text-align: center !important;
+      padding: 10vh 4vw !important; /* Better padding */
+    }
+
+    /* CHILD: History text content */
+    .history>div:first-of-type {
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+    }
+
+    /* CHILD: History image */
+    .history aside {
+      grid-column: 1 !important;
+      grid-row: 3 !important;
+      margin-top: 20px !important;
+    }
+
+    /* PARENT: About section - convert to vertical layout */
+    .about {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto auto auto !important;
+      text-align: center !important;
+      padding: 10vh 4vw !important; /* Better padding */
+    }
+
+    /* CHILD: About image */
+    .about aside {
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      margin-bottom: 20px !important;
+    }
+
+    /* CHILD: About text */
+    .about p {
+      grid-column: 1 !important;
+      grid-row: 3 !important;
+    }
+
+    /* PARENT: Mission/Vision section - convert to vertical layout */
+    .mission-vision {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto auto !important;
+      text-align: center !important;
+      gap: 3rem !important;
+      padding: 10vh 4vw !important; /* Better padding */
+    }
+
+    /* PARENT: Reviews section - convert to vertical layout */
+    .review article>div {
+      flex-direction: column !important;
+    }
+
+    /* CHILD: Reviews text grid */
+    .text-grid {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    /* CHILD: Reviews map */
+    .map {
+      min-width: 100% !important;
+      margin-top: 2rem !important;
+      height: 300px !important;
+    }
+
+    .history img,
+    .about img {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    .image-scroller img {
+      width: 250px;
+      height: 160px;
+    }
+
+    .text-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .column {
+      width: 90%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+    }
+  }
+
+  /* Mobile (max-width 600px) */
+  @media (max-width: 600px) {
+    body {
+      overflow-x: hidden;
+      width: 100vw;
+    }
+
+    .main {
+      width: 100%;
+      overflow: hidden;
+      display: block !important;
+    }
+
+    .content {
+      width: 100%;
+      overflow: hidden;
+      display: block !important;
+    }
+
+    section,
+    article {
+      max-width: 100vw !important;
+      display: block !important;
+      padding: 0 !important; /* REMOVED the problematic padding-right */
+      margin: 0 !important;
+    }
+
+    .main {
+      padding-top: 8vh;
+    }
+
+    .main p,
+    .main h1,
+    .main h2 {
+      padding: 10px 20px !important; /* Consistent mobile padding */
+    }
+
+    .history,
+    .about,
+    .mission,
+    .vision,
+    .review article {
+      padding: 5vh 4vw !important; /* Better mobile padding */
+    }
+
+    .image-scroller img {
+      width: 180px;
+      height: 120px;
+    }
+
+    /* FIXED: Image scroller single line on mobile */
+    .scroll-track {
+      animation: scrollLoopMobile 40s linear infinite;
+    }
+
+    @keyframes scrollLoopMobile {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-180px * 6 - 20px * 6));
+      }
+    }
+
+    .column {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    /* FIXED: Review boxes spacing on mobile */
+    .text-grid {
+      gap: 35px !important;
+      padding: 15px 4vw !important; /* Better mobile padding */
+    }
+
+    .column {
+      margin-bottom: 25px !important;
+    }
+
+    iframe {
+      height: 300px;
+    }
+
+    /* FIX: Ensure all content containers are properly sized */
+    .history,
+    .about,
+    .mission-vision,
+    .review {
+      width: 100% !important;
+      max-width: 100vw !important;
+      padding-left: 4vw !important;
+      padding-right: 4vw !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .column:hover {
+      transform: none;
+    }
+  }
+
+  /* High-DPI display optimization */
+  @media (min-resolution: 192dpi) {
+    .scroll-track img {
+      image-rendering: -webkit-optimize-contrast;
+    }
+  }
+</style>
+
+<body>
+  <!-- EXACT SAME HEADER AS INDEX.HTML -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-left">
+        <img src="Nano-Logo.png" alt="Logo" class="logo" />
+        <p id="side-title">Nano Café</p>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="header-center" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="Menu.html">Menu</a>
+        <a href="contact&info.html">About Us</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="cart">
+          <img src="Cart_img.png" alt="Cart Icon" class="cart-icon">
+          <span class="cart-text">Your Cart</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Rest of your contact.html content remains the same -->
+  <div class="overlay" id="cartOverlay">
+    <div class="overlay-content">
+      <span class="back-arrow" id="close-cart">=></span>
+      <h2>Your Cart</h2>
+      <div class="cart-items">
+      </div>
+
+      <div class="cart-total">
+        <hr>
+        <p>Total: ₱0.00</p>
+      </div>
+
+      <div class="cart-location">
+        <label for="location">Location:</label>
+        <select id="location">
+          <option value="0">-- Select Location --</option>
+          <option value="100">Candelaria - ₱100</option>
+          <option value="75">Sariaya - ₱75</option>
+          <option value="80">Tayabas - ₱80</option>
+          <option value="100">Lucban - ₱100</option>
+          <option value="75">Pagbilao - ₱75</option>
+          <option value="50">Lucena - ₱50</option>
+        </select>
+
+        <div class="grand-total">
+          <div class="delivery-fee">Delivery Fee: ₱0.00</div>
+          <div class="cart-grand-total">GRAND TOTAL: ₱0.00</div>
+          <div class="submit-btn">Order Now!</div>
+        </div>
+      </div>
+      <div class="receipts-wrapper">
+        <div class="receipts-header">
+          <h3>Receipts</h3>
+        </div>
+        <div id="receipts" class="receipts">
+          <!-- JS will inject receipt entries here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main">
+    <section
+      style="background: url(https://i.pinimg.com/originals/f2/28/ab/f228aba1e0d7742c2c167d93358269a6.gif); background-repeat: no-repeat; background-size: cover; background-position:center center; padding: 27vh;">
+      <h2
+        style="font-size: 9vh; background-image: linear-gradient(to right, #333837ea, #f7e6c0); -webkit-background-clip: text; background-clip: text; color: transparent;">
+        Welcome curious user!
+      </h2>
+      <p
+        style="font-size: 5vh; background-image: linear-gradient(to right, #414645ea, #5f594b); -webkit-background-clip: text; background-clip: text; color: transparent;">
+        A mix of soft and calm mornings. <br> The warm sunsets, flashing pixels, and fuzzy stories that make you feel
+        something. this page is what you need to know about my cafe.</p>
+    </section>
+
+    <section class="content">
+      <!-- History Section - Keep your exact inline styles -->
+      <article class="history"
+        style="background-color: beige; display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 30px; padding: 15vh; color: #5f594b;">
+        <h1 id="history"
+          style="grid-column: 1 / -1; text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #5f594b;">
+          History
+        </h1>
+        <div>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: #5f594b;">
+            Nano Cafe Lucena started from something simple like a daydream with the love for coffee and the hope of
+            creating something meaningful.
+            The owner grew up comfortably, finished all their studies then faced a tough time finding a stable job.
+            Instead of giving up, he turned to what he truly loved for coffee, food, and the idea of giving people a
+            place to enjoy both with limitless options.
+            He noticed how many cafes had limited options with high prices and thought,
+            "Why not make a place where people can enjoy more choices, good taste, and still keep it affordable?"
+            That small idea slowly turned into what is now Nano Cafe Lucena. It started as a simple side hustle a few
+            drinks, a few snacks, and a lot of hope.
+            Over time, more people began to visit. Friends, students, workers, and families found comfort in the cozy
+            space and wide menu. From hot and cold drinks, frappes, and milkshakes,
+            to appetizers, pasta, breads, desserts, and even bangus dishes there's always something for everyone here.
+            Today, Nano Cafe Lucena may still be small, but it continues to grow through passion, hard work, and the
+            support of everyone who walks through its doors.
+            It's not just a café it's a reminder that dreams can start from the simplest moments, and grow with love and
+            dedication.
+          </p>
+        </div>
+        <aside style="display: flex; justify-content: center;">
+          <img src="Slide-img/Nano-img1.jpg" alt="Nano Cafe Image"
+            style="width: 100%; max-width: 400px; border-radius: 10px;">
+        </aside>
+      </article>
+
+      <div class="image-scroller">
+        <div class="scroll-track">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+          <img src="Slide-img/Nano-img1.jpg">
+        </div>
+      </div>
+
+      <!-- About Section - REVERSED layout (image left, text right) -->
+      <article class="about"
+        style="background-color: rgb(240, 221, 189); display: grid; grid-template-columns: 1fr 2fr; align-items: center; gap: 30px; padding: 15vh; color: #5f594b;">
+        <h1 id="about"
+          style="grid-column: 1 / -1; text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #174350;">
+          About
+        </h1>
+        <aside style="display: flex; justify-content: center;">
+          <img src="ims/cafe.jpg" style="width: 100%; max-width: 500px; border-radius: 10px;">
+        </aside>
+        <p style="font-size: 1.1rem; line-height: 1.7; color: #174350;">
+          At Nano Cafe Lucena, we believe in simple comfort and genuine connection. Our goal is to make every visit feel
+          like index — a place where you can enjoy great food, relax, and share good moments with friends and family.
+          Every drink and dish is made with care, using quality ingredients and a lot of heart.
+        </p>
+      </article>
+
+      <hr class="divider">
+
+      <!-- Mission/Vision Section - TWO COLUMNS on desktop -->
+      <article class="mission-vision"
+        style="font-size: 27px; letter-spacing: 2px; background-color: #a58a75; padding: 20vh; color: #5f594b;">
+        <div style="flex: 1; min-width: 250px;">
+          <h2 style="color: #5f594b; font-family: Vina Sans, sans-serif;">Mission</h2>
+          <p style="color: #5f594b;">
+            To serve quality yet affordable food and drinks that bring people together — one cup and one smile at a
+            time.
+          </p>
+        </div>
+
+        <div style="flex: 1; min-width: 250px;">
+          <h2 style="color: #5f594b; font-family: Vina Sans, sans-serif;">Vision</h2>
+          <p style="color: #5f594b;">
+            To grow from a small, local café into a beloved community spot that inspires others to chase their dreams,
+            just like how Nano Cafe began — small, but full of heart.
+          </p>
+        </div>
+      </article>
+
+      <hr class="divider" style="background: linear-gradient(#a58a75, #81654f);">
+
+      <!-- Reviews Section - Keep your exact inline styles -->
+      <article class="review" style="background-color: #81654f; padding: 10vh;">
+        <h1 id="review" style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #174350;">Reviews</h1>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
+          <div class="text-grid" style="flex: 1; min-width: 100px; max-width: 600px;">
+            <div class="column">
+              <div class="avatar" style="background-image:url('imgs/avatar1.jpg');"></div>
+              <h3 class="username">Bob Smith</h3>
+              <p class="comment">Aptent vel egestas vestibulum aliquam ullamcorper volutpat ullamcorper pharetra hac
+                posuere a rhoncus purus molestie torquent.</p>
+            </div>
+            <div class="column">
+              <div class="avatar" style="background-image:url('imgs/avatar2.jpg');"></div>
+              <h3 class="username">Alice Johnson</h3>
+              <p class="comment">Scelerisque purus cursus dictum ornare a phasellus. A augue venenatis adipiscing, purus
+                urna malesuada.</p>
+            </div>
+            <div class="column">
+              <div class="avatar" style="background-image:url('imgs/avatar3.jpg');"></div>
+              <h3 class="username">Mark Lee</h3>
+              <p class="comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta
+                felis euismod semper.</p>
+            </div>
+          </div>
+          <div class="map" style="flex: 1; min-width: 300px; height: 550px; max-width: 900px">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.679882845725!2d121.6093666!3d13.9444462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4dd6fe693413%3A0xbf95146d232f152b!2sNano%20Cafe!5e0!3m2!1sen!2sph!4v1727500000000"
+              width="100%" height="100%" style="border:0;" allowfullscreen=""
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </article>
+
+
+      <footer class="site-footer" id="footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h2>Nano Cafe</h2>
+            <p>Where all your caffeine cravings and sweet tooth options meet your taste buds~</p>
+          </div>
+
+          <div class="footer-column contact-section">
+            <h2>Contact Info</h2>
+            <div class="contact-columns">
+              <div class="contact-left">
+                <p>Phone: (042) 785 5611</p>
+                <p>Email: nanocafeph@gmail.com</p>
+              </div>
+              <p>Address: Starmax Building unit 4,Jasmin Street, 4301 Lucena</p>
+            </div>
+          </div>
+        </div>
+        <div style="color:#1b130c9d; border-top: 1px solid #38291c67; padding-top: 10px;">
+          <p>© 2025 Nano Cafe. All Rights Reserved.</p>
+        </div>
+      </footer>
+
+    </section>
+  </div>
+</body>
+
+</html>
