@@ -627,6 +627,21 @@
   </footer>
 
   <script>
+    const BASE_URL = window.location.hostname === 'localhost' ? '' : '/nano_cafe';
+
+    function loadPage(page) {
+      const frame = document.getElementById("contentFrame");
+      frame.src = BASE_URL + page;
+
+      // Update active button
+      const buttons = document.querySelectorAll('.sidebar button');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick')?.includes(page)) {
+          btn.classList.add('active');
+        }
+      });
+    }
     // iframe loader
     function loadPage(page) {
       const frame = document.getElementById("contentFrame");
