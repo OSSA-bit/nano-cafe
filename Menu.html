@@ -587,15 +587,15 @@
     <span class="horizontal-line"></span>
     <div class="nav-container">
       <div class="sidebar">
-        <button onclick="loadPage('menu_info.html#special')">Chef's Special</button>
-        <button onclick="loadPage('menu_info.html#hot')">Hot Drinks</button>
-        <button onclick="loadPage('menu_info.html#cold')">Cold Drinks</button>
-        <button onclick="loadPage('menu_info.html#frappe')">Frappe</button>
-        <button onclick="loadPage('menu_info.html#milkshake')">Milkshake</button>
-        <button onclick="loadPage('menu_info.html#appetizer')">Appetizers</button>
-        <button onclick="loadPage('menu_info.html#entree')">Entrees</button>
-        <button onclick="loadPage('menu_info.html#PiznSan')">Pizza & Sandwich</button>
-        <button onclick="loadPage('menu_info.html#dessert')">Dessert</button>
+        <button onclick="loadPage('Menu_info.html#special')">Chef's Special</button>
+        <button onclick="loadPage('Menu_info.html#hot')">Hot Drinks</button>
+        <button onclick="loadPage('Menu_info.html#cold')">Cold Drinks</button>
+        <button onclick="loadPage('Menu_info.html#frappe')">Frappe</button>
+        <button onclick="loadPage('Menu_info.html#milkshake')">Milkshake</button>
+        <button onclick="loadPage('Menu_info.html#appetizer')">Appetizers</button>
+        <button onclick="loadPage('Menu_info.html#entree')">Entrees</button>
+        <button onclick="loadPage('Menu_info.html#PiznSan')">Pizza & Sandwich</button>
+        <button onclick="loadPage('Menu_info.html#dessert')">Dessert</button>
       </div>
 
       <div class="content">
@@ -627,22 +627,12 @@
   </footer>
 
   <script>
+    // iframe loader
     function loadPage(page) {
       const frame = document.getElementById("contentFrame");
+      frame.src = page;
 
-      // GitHub Pages absolute path fix
-      const repoName = 'your-repo-name'; // ← CHANGE THIS TO YOUR ACTUAL REPO NAME
-      const fullPath = `/${repoName}/${page}`;
-      frame.src = fullPath;
-
-      // if iframe failed to load.
-      frame.onerror = function () {
-        console.error('Failed to load page:', page);
-        // Fallback to relative path
-        frame.src = './' + page;
-      };
-
-      // Update active button state
+      // Update active button
       const buttons = document.querySelectorAll('.sidebar button');
       buttons.forEach(btn => {
         btn.classList.remove('active');
@@ -653,12 +643,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Load default page on startup with absolute path
-      const repoName = 'nano-cafe'; 
-      const defaultPage = `/${repoName}/menu_info.html`;
-      document.getElementById("contentFrame").src = defaultPage;
+      // default page
+      loadPage('Menu_info.html#special');
 
-      // Set up button click handlers
+      // Button handlers
       const buttons = document.querySelectorAll('.sidebar button');
       buttons.forEach(btn => {
         btn.addEventListener('click', function () {
@@ -673,6 +661,9 @@
       now.setHours(now.getHours() - 24);
       const today = now.getDay();
       boxes[today]?.classList.add("active");
+
+      // Initialize cart
+      initCartSystem();
     });
   </script>
 

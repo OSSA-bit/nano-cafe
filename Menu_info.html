@@ -583,52 +583,41 @@
 
 
   <script>
-    // Show the correct section based on URL parameters
-    function showSection() {
+    // Show the correct section based on hash
+    document.addEventListener('DOMContentLoaded', function () {
+      const hash = window.location.hash.substring(1);
+      const activeSection = document.getElementById(hash);
+
       // Hide all sections first
       document.querySelectorAll('.page-section').forEach(section => {
         section.style.display = 'none';
       });
 
-      // Get section from URL parameters or hash
-      const urlParams = new URLSearchParams(window.location.search);
-      const sectionName = urlParams.get('section') || window.location.hash.substring(1);
-
-      const activeSection = document.getElementById(sectionName);
-
-      // Show section if found, else default to 'special'
+      // Show active section or default
       if (activeSection) {
         activeSection.style.display = 'block';
       } else {
         document.getElementById('special').style.display = 'block';
       }
-    }
 
-    // Call on load and when hash changes [a.k.a clicking]
-    document.addEventListener('DOMContentLoaded', showSection);
-    window.addEventListener('hashchange', showSection);
+      // Add-to-cart buttons
+      document.querySelectorAll('.price-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const itemName = button.previousElementSibling.textContent.trim();
+          const itemPrice = button.textContent.trim();
 
-    // Add-to-cart system
-    document.querySelectorAll('.price-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const itemName = button.previousElementSibling.textContent.trim();
-        const itemPrice = button.textContent.trim();
+          // Send to parent
+          if (window.parent) {
+            window.parent.postMessage({
+              type: 'add-to-cart',
+              item: { name: itemName, price: itemPrice }
+            }, '*');
+          }
 
-        // Send to parent (main page)
-        window.parent.postMessage(
-          {
-            type: 'add-to-cart',
-            item: {
-              name: itemName,
-              price: itemPrice
-            }
-          },
-          '*'
-        );
-
-        // Visual feedback
-        button.style.transform = 'scale(0.9)';
-        setTimeout(() => (button.style.transform = ''), 150);
+          // Visual feedback
+          button.style.transform = 'scale(0.9)';
+          setTimeout(() => (button.style.transform = ''), 150);
+        });
       });
     });
   </script>
