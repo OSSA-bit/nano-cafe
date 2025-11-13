@@ -585,15 +585,15 @@
     <span class="horizontal-line"></span>
     <div class="nav-container">
       <div class="sidebar">
-        <button onclick="loadPage('Menu_info.html#special')">Chef's Special</button>
-        <button onclick="loadPage('Menu_info.html#hot')">Hot Drinks</button>
-        <button onclick="loadPage('Menu_info.html#cold')">Cold Drinks</button>
-        <button onclick="loadPage('Menu_info.html#frappe')">Frappe</button>
-        <button onclick="loadPage('Menu_info.html#milkshake')">Milkshake</button>
-        <button onclick="loadPage('Menu_info.html#appetizer')">Appetizers</button>
-        <button onclick="loadPage('Menu_info.html#entree')">Entrees</button>
-        <button onclick="loadPage('Menu_info.html#PiznSan')">Pizza & Sandwich</button>
-        <button onclick="loadPage('Menu_info.html#dessert')">Dessert</button>
+        <button onclick="loadPage('/Menu_info.html#special')">Chef's Special</button>
+        <button onclick="loadPage('/Menu_info.html#hot')">Hot Drinks</button>
+        <button onclick="loadPage('/Menu_info.html#cold')">Cold Drinks</button>
+        <button onclick="loadPage('/Menu_info.html#frappe')">Frappe</button>
+        <button onclick="loadPage('/Menu_info.html#milkshake')">Milkshake</button>
+        <button onclick="loadPage('/Menu_info.html#appetizer')">Appetizers</button>
+        <button onclick="loadPage('/Menu_info.html#entree')">Entrees</button>
+        <button onclick="loadPage('/Menu_info.html#PiznSan')">Pizza & Sandwich</button>
+        <button onclick="loadPage('/Menu_info.html#dessert')">Dessert</button>
       </div>
 
       <div class="content">
@@ -627,7 +627,15 @@
   <script>
     function loadPage(page) {
       const frame = document.getElementById("contentFrame");
-      frame.src = page; // Directly set the source
+
+      //github quirks for iframes [due to error 404, regardless of correct name]
+      const fullPath = page.startsWith('/') ? page : './' + page;
+      frame.src = fullPath;
+
+      // if iframe failed to load.
+      frame.onerror = function () {
+        console.error('Failed to load page:', page);
+      };
 
       // Update active button state
       const buttons = document.querySelectorAll('.sidebar button');
