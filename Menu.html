@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *;">  <!--Github's security for iframes-->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *;">
+  <!--Github's security for iframes-->
   <title>Main Menu</title>
 </head>
 
@@ -586,15 +587,15 @@
     <span class="horizontal-line"></span>
     <div class="nav-container">
       <div class="sidebar">
-        <button onclick="loadPage('/Menu_info.html#special')">Chef's Special</button>
-        <button onclick="loadPage('/Menu_info.html#hot')">Hot Drinks</button>
-        <button onclick="loadPage('/Menu_info.html#cold')">Cold Drinks</button>
-        <button onclick="loadPage('/Menu_info.html#frappe')">Frappe</button>
-        <button onclick="loadPage('/Menu_info.html#milkshake')">Milkshake</button>
-        <button onclick="loadPage('/Menu_info.html#appetizer')">Appetizers</button>
-        <button onclick="loadPage('/Menu_info.html#entree')">Entrees</button>
-        <button onclick="loadPage('/Menu_info.html#PiznSan')">Pizza & Sandwich</button>
-        <button onclick="loadPage('/Menu_info.html#dessert')">Dessert</button>
+        <button onclick="loadPage('Menu_info.html#special')">Chef's Special</button>
+        <button onclick="loadPage('Menu_info.html#hot')">Hot Drinks</button>
+        <button onclick="loadPage('Menu_info.html#cold')">Cold Drinks</button>
+        <button onclick="loadPage('Menu_info.html#frappe')">Frappe</button>
+        <button onclick="loadPage('Menu_info.html#milkshake')">Milkshake</button>
+        <button onclick="loadPage('Menu_info.html#appetizer')">Appetizers</button>
+        <button onclick="loadPage('Menu_info.html#entree')">Entrees</button>
+        <button onclick="loadPage('Menu_info.html#PiznSan')">Pizza & Sandwich</button>
+        <button onclick="loadPage('Menu_info.html#dessert')">Dessert</button>
       </div>
 
       <div class="content">
@@ -629,13 +630,16 @@
     function loadPage(page) {
       const frame = document.getElementById("contentFrame");
 
-      //github quirks for iframes [due to error 404, regardless of correct name]
-      const fullPath = page.startsWith('/') ? page : './' + page;
+      // GitHub Pages absolute path fix
+      const repoName = 'your-repo-name'; // ← CHANGE THIS TO YOUR ACTUAL REPO NAME
+      const fullPath = `/${repoName}/${page}`;
       frame.src = fullPath;
 
       // if iframe failed to load.
       frame.onerror = function () {
         console.error('Failed to load page:', page);
+        // Fallback to relative path
+        frame.src = './' + page;
       };
 
       // Update active button state
@@ -649,8 +653,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Load default page on startup
-      loadPage('Menu_info.html');
+      // Load default page on startup with absolute path
+      const repoName = 'nano-cafe'; 
+      const defaultPage = `/${repoName}/Menu_info.html`;
+      document.getElementById("contentFrame").src = defaultPage;
 
       // Set up button click handlers
       const buttons = document.querySelectorAll('.sidebar button');
@@ -669,6 +675,7 @@
       boxes[today]?.classList.add("active");
     });
   </script>
+
 </body>
 
 </html>
