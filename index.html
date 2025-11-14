@@ -810,7 +810,6 @@
     }, appearOptions);
     fadeEls.forEach(el => appearOnScroll.observe(el));
 
-    //for the four best dishes
     document.addEventListener("DOMContentLoaded", () => {
       const orderButtons = document.querySelectorAll(".order-btn");
 
@@ -819,7 +818,6 @@
           const name = btn.previousElementSibling.previousElementSibling.textContent.trim();
           const price = btn.getAttribute("data-price");
 
-          // In index.html - for the best sellers section
           window.postMessage({
             type: "add-to-cart",
             item: { name, price: `₱${price}` }

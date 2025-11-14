@@ -634,7 +634,6 @@
       document.addEventListener('DOMContentLoaded', function () {
         console.log('=== CART DEBUG ===');
 
-        // Check if cart elements exist
         const cart = document.querySelector('.cart');
         const overlay = document.getElementById('cartOverlay');
         const cartItems = document.querySelector('.cart-items');
@@ -643,12 +642,11 @@
         console.log('Overlay element:', overlay);
         console.log('Cart items element:', cartItems);
 
-        // Check if cart is visible and clickable
         if (cart) {
           console.log('Cart styles:', window.getComputedStyle(cart));
           console.log('Cart position:', cart.getBoundingClientRect());
 
-          // Test click manually
+          // debug when click 
           cart.addEventListener('click', function (e) {
             e.stopPropagation();
             console.log('Cart was clicked!');
@@ -664,10 +662,10 @@
           console.log('NO CART ELEMENT FOUND');
         }
 
-        // Check if initCartSystem is being called
+        // Check if cart system exist
         console.log('initCartSystem function exists:', typeof initCartSystem);
 
-        // Manually try to initialize cart
+        // when click call cart system
         if (typeof initCartSystem === 'function') {
           console.log('Calling initCartSystem...');
           initCartSystem();
@@ -686,7 +684,6 @@
         const frame = document.getElementById("contentFrame");
         frame.src = BASE_URL + page;
 
-        // Update active button
         const buttons = document.querySelectorAll('.sidebar button');
         buttons.forEach(btn => {
           btn.classList.remove('active');
@@ -711,7 +708,6 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        // default page
         loadPage('Menu_info.html#special');
 
         // Button handlers
