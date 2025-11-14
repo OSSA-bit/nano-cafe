@@ -598,45 +598,45 @@
     </header>
 
     <div class="overlay" id="cartOverlay">
-    <div class="overlay-content">
-      <span class="back-arrow" id="close-cart">=></span>
-      <h2>Your Cart</h2>
-      <div class="cart-items">
-      </div>
-
-      <div class="cart-total">
-        <hr>
-        <p>Total: ₱0.00</p>
-      </div>
-
-      <div class="cart-location">
-        <label for="location">Location:</label>
-        <select id="location">
-          <option value="0">-- Select Location --</option>
-          <option value="100">Candelaria - ₱100</option>
-          <option value="75">Sariaya - ₱75</option>
-          <option value="80">Tayabas - ₱80</option>
-          <option value="100">Lucban - ₱100</option>
-          <option value="75">Pagbilao - ₱75</option>
-          <option value="50">Lucena - ₱50</option>
-        </select>
-
-        <div class="grand-total">
-          <div class="delivery-fee">Delivery Fee: ₱0.00</div>
-          <div class="cart-grand-total">GRAND TOTAL: ₱0.00</div>
-          <div class="submit-btn">Order Now!</div>
+      <div class="overlay-content">
+        <span class="back-arrow" id="close-cart">=></span>
+        <h2>Your Cart</h2>
+        <div class="cart-items">
         </div>
-      </div>
-      <div class="receipts-wrapper">
-        <div class="receipts-header">
-          <h3>Receipts</h3>
+
+        <div class="cart-total">
+          <hr>
+          <p>Total: ₱0.00</p>
         </div>
-        <div id="receipts" class="receipts">
-          <!-- JS will inject receipt entries here -->
+
+        <div class="cart-location">
+          <label for="location">Location:</label>
+          <select id="location">
+            <option value="0">-- Select Location --</option>
+            <option value="100">Candelaria - ₱100</option>
+            <option value="75">Sariaya - ₱75</option>
+            <option value="80">Tayabas - ₱80</option>
+            <option value="100">Lucban - ₱100</option>
+            <option value="75">Pagbilao - ₱75</option>
+            <option value="50">Lucena - ₱50</option>
+          </select>
+
+          <div class="grand-total">
+            <div class="delivery-fee">Delivery Fee: ₱0.00</div>
+            <div class="cart-grand-total">GRAND TOTAL: ₱0.00</div>
+            <div class="submit-btn">Order Now!</div>
+          </div>
+        </div>
+        <div class="receipts-wrapper">
+          <div class="receipts-header">
+            <h3>Receipts</h3>
+          </div>
+          <div id="receipts" class="receipts">
+            <!-- JS will inject receipt entries here -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <video class="center-video" autoplay muted loop playsinline>
       <source src="NanoVideo.mp4" type="video/mp4">
@@ -741,7 +741,7 @@
     </section>
 
     <section class="form">
-      <form>
+      <form action="form.php" method="POST">
         <fieldset>
           <legend>Contact Us Now!</legend>
 
@@ -829,6 +829,11 @@
         });
       });
     });
+
+    if (window.location.search.includes('success=1')) {
+      alert('Form submitted successfully!');
+      // Or show a nice message on the page instead of alert
+    }
   </script>
 </body>
 
