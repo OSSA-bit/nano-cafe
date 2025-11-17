@@ -583,30 +583,26 @@
 
 
   <script>
-    // Show the correct section based on hash
     document.addEventListener('DOMContentLoaded', function () {
       const hash = window.location.hash.substring(1);
       const activeSection = document.getElementById(hash);
 
-      // Hide all sections first
       document.querySelectorAll('.page-section').forEach(section => {
         section.style.display = 'none';
       });
 
-      // Show active section or default
       if (activeSection) {
         activeSection.style.display = 'block';
       } else {
         document.getElementById('special').style.display = 'block';
       }
 
-      // Add-to-cart buttons
+      // for the add-cart function
       document.querySelectorAll('.price-btn').forEach(button => {
         button.addEventListener('click', () => {
           const itemName = button.previousElementSibling.textContent.trim();
           const itemPrice = button.textContent.trim();
 
-          // Send to parent
           if (window.parent) {
             window.parent.postMessage({
               type: 'add-to-cart',
@@ -614,12 +610,13 @@
             }, '*');
           }
 
-          // Visual feedback
           button.style.transform = 'scale(0.9)';
           setTimeout(() => (button.style.transform = ''), 150);
         });
       });
     });
+
+    window.addEventListener('hashchange', () => window.location.reload());
   </script>
 </body>
 

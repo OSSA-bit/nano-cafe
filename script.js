@@ -240,3 +240,13 @@ const initCartSystem = () => {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', initCartSystem);
+
+//hamburger
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.header-center');
+
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+}
