@@ -476,7 +476,7 @@
 </style>
 
 <body>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
   <div class="wrapper">
     <header class="header">
@@ -631,6 +631,17 @@
     </footer>
 
     <script>
+
+      //hamburger
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.header-center');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+        });
+      }
+      
       document.addEventListener('DOMContentLoaded', function () {
         console.log('=== CART DEBUG ===');
 
@@ -729,16 +740,6 @@
         // Initialize cart
         initCartSystem();
       });
-
-      //hamburger
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navMenu = document.querySelector('.header-center');
-
-      if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-          navMenu.classList.toggle('active');
-        });
-      }
     </script>
 
 </body>

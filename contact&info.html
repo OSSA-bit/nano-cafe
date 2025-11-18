@@ -406,114 +406,178 @@
 
   /* Mobile */
   @media (max-width: 600px) {
-    body {
-      overflow-x: hidden;
-      width: 100vw;
-    }
-
-    .main {
-      width: 100%;
-      overflow-x: hidden;
-      display: block;
-      padding-top: 8vh;
-    }
-
-    .content {
-      width: 100%;
-      overflow-x: hidden;
-      display: block;
-    }
-
-    section,
-    article {
-      width: 100% !important;
-      max-width: 100% !important;
-      display: block;
-      padding: 0 !important;
-      margin: 0 !important;
-      box-sizing: border-box;
-    }
-
-    .main p,
-    .main h1,
-    .main h2 {
-      padding: 10px 5% !important;
-      width: 90% !important;
-      margin: 0 auto !important;
-      box-sizing: border-box;
-    }
-
-    /* Fix specific sections */
-    .history,
-    .about,
-    .mission-vision,
-    .review article {
-      padding: 5vh 5% !important;
-      width: 90% !important;
-      margin: 0 auto !important;
-      display: block !important;
-    }
-
-    /* Fix mission-vision specifically */
-    .mission-vision {
-      grid-template-columns: 1fr !important;
-      gap: 2rem !important;
-      padding: 10vh 5% !important;
-      width: 90% !important;
-    }
-
-    .mission-vision>div {
-      width: 100% !important;
-      padding: 0 !important;
-    }
-
-    /* Fix iframe/map */
-    .map {
-      width: 90% !important;
-      margin: 2rem auto !important;
-      padding: 0 !important;
-      height: 300px;
-    }
-
-    iframe {
-      width: 100% !important;
-      height: 300px !important;
-    }
-
-    .image-scroller img {
-      width: 180px;
-      height: 120px;
-    }
-
-    .scroll-track {
-      animation: scrollLoopMobile 40s linear infinite;
-    }
-
-    @keyframes scrollLoopMobile {
-      0% {
-        transform: translateX(0);
+    /* Mobile */
+    @media (max-width: 600px) {
+      body {
+        overflow-x: hidden;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
       }
 
-      100% {
-        transform: translateX(calc(-180px * 6 - 20px * 6));
+      .main {
+        width: 100vw;
+        overflow-x: hidden;
+        display: block;
+        padding-top: 8vh;
+        margin: 0;
       }
-    }
 
-    .column {
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-    }
+      .content {
+        width: 100vw;
+        overflow-x: hidden;
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
 
-    .text-grid {
-      gap: 35px;
-      padding: 15px 5%;
-      width: 90%;
-      margin: 0 auto;
-    }
+      section,
+      article {
+        width: 100vw;
+        max-width: 100vw;
+        display: block;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
-    .column {
-      margin-bottom: 25px;
+
+      .main p,
+      .main h1,
+      .main h2 {
+        padding: 8px 5%;
+        width: 90%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      .main h1 {
+        font-size: 1.5rem;
+      }
+
+      .main h2 {
+        font-size: 1.3rem;
+      }
+
+
+      .main section:first-child h2 {
+        font-size: 1.8rem;
+      }
+
+      .main section:first-child p {
+        font-size: 1rem;
+      }
+
+
+      .history,
+      .about,
+      .mission-vision,
+      .review article {
+        padding: 4vh 0;
+        width: 100vw;
+        margin: 0;
+        display: block;
+      }
+
+      /* Mission-vision full width */
+      .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 8vh 0;
+        width: 100vw;
+      }
+
+      .mission-vision>div {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 5%;
+      }
+
+
+      .mission-vision h2 {
+        font-size: 1.5rem;
+      }
+
+      .mission-vision p {
+        font-size: 0.9rem;
+      }
+
+
+      .map {
+        width: 100vw;
+        margin: 1rem 0;
+        padding: 0;
+        height: 250px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 250px;
+      }
+
+      .image-scroller {
+        padding: 15px 0;
+      }
+
+      .image-scroller img {
+        width: 150px;
+        height: 100px;
+      }
+
+      .scroll-track {
+        animation: scrollLoopMobile 35s linear infinite;
+      }
+
+      @keyframes scrollLoopMobile {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(calc(-150px * 6 - 15px * 6));
+        }
+      }
+
+      .column {
+        width: 95%;
+        padding: 12px;
+        margin: 8px auto;
+        font-size: 0.85rem;
+        /* Reduced text */
+      }
+
+      .text-grid {
+        gap: 25px;
+        /* Reduced gap */
+        padding: 10px 2.5%;
+        /* Reduced padding */
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .username {
+        font-size: 1rem;
+      }
+
+      .comment {
+        font-size: 0.85rem;
+      }
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+        margin-right: 8px;
+        margin-top: 10px;
+      }
+
+      .history img,
+      .about img {
+        max-width: 90%;
+        margin: 0 auto;
+      }
     }
   }
 
