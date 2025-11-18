@@ -581,8 +581,9 @@
   </div>
 
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
   <script>
+    // Simple section switcher
     document.addEventListener('DOMContentLoaded', function () {
       const hash = window.location.hash.substring(1);
       const activeSection = document.getElementById(hash);
@@ -597,7 +598,7 @@
         document.getElementById('special').style.display = 'block';
       }
 
-      // for the add-cart function
+      // Add-to-cart buttons
       document.querySelectorAll('.price-btn').forEach(button => {
         button.addEventListener('click', () => {
           const itemName = button.previousElementSibling.textContent.trim();
