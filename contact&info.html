@@ -409,145 +409,91 @@
     body {
       overflow-x: hidden;
       width: 100vw;
+      margin: 0;
+      padding: 0;
     }
 
     .main {
-      width: 100%;
+      width: 100vw;
       overflow-x: hidden;
       display: block;
       padding-top: 8vh;
+      transform: scale(1);
+      transform-origin: top center;
     }
 
-    .content {
-      width: 100%;
-      overflow-x: hidden;
-      display: block;
+    .main section:first-child {
+      width: 100vw ;
+      padding: 15vh 0 ;
+      margin: 0 ;
+      background-size: cover ;
+      background-position: center ;
+      left: 0 ;
+      right: 0 ;
     }
-
-    section,
-    article {
-      width: 100%;
-      max-width: 100%;
-      display: block;
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
 
     .main p,
     .main h1,
     .main h2 {
-      padding: 10px 5%;
-      width: 90%;
-      margin: 0 auto;
+      padding: 10px 5% ;
+      width: 90% ;
+      margin: 0 auto ;
       box-sizing: border-box;
       font-size: 0.9rem;
-    }
-
-    .main h1 {
-      font-size: 1.4rem;
-    }
-
-    .main h2 {
-      font-size: 1.2rem;
-    }
-
-
-    .main section:first-child h2 {
-      font-size: 1.8rem;
-    }
-
-    .main section:first-child p {
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-
-    .main section:first-child {
-      width: 100vw;
-      background-size: cover;
-      background-position: center;
+      max-width: none ;
     }
 
     .history,
-    .about,
-    .mission-vision,
-    .review article {
-      padding: 5vh 5%;
-      width: 90%;
-      margin: 0 auto;
-      display: block;
+    .about {
+      width: 100vw ;
+      padding: 5vh 0 ;
+      margin: 0 ;
     }
 
+    .history>div:first-of-type,
+    .about p {
+      width: 90% ;
+      margin: 0 auto ;
+      padding: 0 5% ;
+    }
 
     .mission-vision {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      padding: 10vh 5%;
-      width: 90%;
+      width: 100vw ;
+      padding: 10vh 0 ;
+      margin: 0 ;
+      gap: 2rem ;
     }
 
     .mission-vision>div {
-      width: 100%;
-      padding: 0;
+      width: 90% ;
+      margin: 0 auto ;
+      padding: 0 5% ;
     }
 
-
-    .mission-vision h2 {
-      font-size: 1.4rem;
-    }
-
-    .mission-vision p {
-      font-size: 0.9rem;
-    }
-
-
-    .map {
-      width: 90%;
-      margin: 2rem auto;
-      padding: 0;
-      height: 300px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-    }
-
-    .image-scroller img {
-      width: 180px;
-      height: 120px;
-    }
-
-    .scroll-track {
-      animation: scrollLoopMobile 40s linear infinite;
-    }
-
-    @keyframes scrollLoopMobile {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(calc(-180px * 6 - 20px * 6));
-      }
-    }
-
-    .column {
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
+    .review {
+      width: 100vw ;
+      padding: 5vh 0 ;
+      margin: 0 ;
     }
 
     .text-grid {
-      gap: 35px;
-      padding: 15px 5%;
-      width: 90%;
-      margin: 0 auto;
+      width: 90% ;
+      margin: 0 auto ;
+      padding: 0 5% ;
     }
 
-    .column {
-      margin-bottom: 25px;
+    .map {
+      width: 90% ;
+      margin: 1rem auto ;
+      padding: 0 ;
+    }
+
+    @viewport {
+      width: device-width;
+      zoom: 1.0;
+      min-zoom: 1.0;
+      max-zoom: 1.0;
+      user-zoom: fixed;
     }
   }
 
