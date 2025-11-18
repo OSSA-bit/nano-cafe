@@ -476,7 +476,7 @@
 </style>
 
 <body>
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 
   <div class="wrapper">
     <header class="header">
@@ -631,8 +631,7 @@
     </footer>
 
     <script>
-
-      //hamburger
+      // Hamburger menu
       const menuToggle = document.querySelector('.menu-toggle');
       const navMenu = document.querySelector('.header-center');
 
@@ -641,54 +640,8 @@
           navMenu.classList.toggle('active');
         });
       }
-      
-      document.addEventListener('DOMContentLoaded', function () {
-        console.log('=== CART DEBUG ===');
 
-        const cart = document.querySelector('.cart');
-        const overlay = document.getElementById('cartOverlay');
-        const cartItems = document.querySelector('.cart-items');
-
-        console.log('Cart element:', cart);
-        console.log('Overlay element:', overlay);
-        console.log('Cart items element:', cartItems);
-
-        if (cart) {
-          console.log('Cart styles:', window.getComputedStyle(cart));
-          console.log('Cart position:', cart.getBoundingClientRect());
-
-          // debug when click 
-          cart.addEventListener('click', function (e) {
-            e.stopPropagation();
-            console.log('Cart was clicked!');
-
-            if (overlay) {
-              overlay.classList.add('active');
-              console.log('Overlay should be visible now');
-            } else {
-              console.log('No overlay found to open');
-            }
-          });
-        } else {
-          console.log('NO CART ELEMENT FOUND');
-        }
-
-        // Check if cart system exist
-        console.log('initCartSystem function exists:', typeof initCartSystem);
-
-        // when click call cart system
-        if (typeof initCartSystem === 'function') {
-          console.log('Calling initCartSystem...');
-          initCartSystem();
-        }
-
-        console.log('=== END DEBUG ===');
-      });
-      document.addEventListener("DOMContentLoaded", () => {
-        console.log('Cart element:', document.querySelector('.cart'));
-        console.log('Overlay element:', document.getElementById('cartOverlay'));
-        console.log('Cart items element:', document.querySelector('.cart-items'));
-      });
+      // SINGLE loadPage function (keeping the GitHub Pages version)
       const BASE_URL = window.location.hostname === 'localhost' ? '' : '/nano_cafe';
 
       function loadPage(page) {
@@ -703,22 +656,10 @@
           }
         });
       }
-      // iframe loader
-      function loadPage(page) {
-        const frame = document.getElementById("contentFrame");
-        frame.src = page;
 
-        // Update active button
-        const buttons = document.querySelectorAll('.sidebar button');
-        buttons.forEach(btn => {
-          btn.classList.remove('active');
-          if (btn.getAttribute('onclick')?.includes(page)) {
-            btn.classList.add('active');
-          }
-        });
-      }
-
+      // SINGLE DOMContentLoaded listener
       document.addEventListener("DOMContentLoaded", () => {
+        // Load default page
         loadPage('Menu_info.html#special');
 
         // Button handlers
@@ -738,7 +679,9 @@
         boxes[today]?.classList.add("active");
 
         // Initialize cart
-        initCartSystem();
+        if (typeof initCartSystem === 'function') {
+          initCartSystem();
+        }
       });
     </script>
 
