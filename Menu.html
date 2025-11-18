@@ -641,7 +641,6 @@
         });
       }
 
-      // SINGLE loadPage function (keeping the GitHub Pages version)
       const BASE_URL = window.location.hostname === 'localhost' ? '' : '/nano_cafe';
 
       function loadPage(page) {
@@ -657,12 +656,9 @@
         });
       }
 
-      // SINGLE DOMContentLoaded listener
       document.addEventListener("DOMContentLoaded", () => {
-        // Load default page
         loadPage('Menu_info.html#special');
 
-        // Button handlers
         const buttons = document.querySelectorAll('.sidebar button');
         buttons.forEach(btn => {
           btn.addEventListener('click', function () {
@@ -671,20 +667,15 @@
           });
         });
 
-        // Store hours highlighting
         const boxes = document.querySelectorAll(".storehour-box");
         const now = new Date();
         now.setHours(now.getHours() - 24);
         const today = now.getDay();
         boxes[today]?.classList.add("active");
 
-        // Initialize cart
-        if (typeof initCartSystem === 'function') {
-          initCartSystem();
-        }
+        // Cart will auto-initialize via script.js DOMContentLoaded
       });
     </script>
-
 </body>
 
 </html>
