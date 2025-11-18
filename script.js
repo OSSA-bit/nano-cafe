@@ -1,4 +1,4 @@
-// Cart System - works on all pages
+// Cart System - works on all pages [most]
 const initCartSystem = () => {
   const cartState = {
     items: JSON.parse(localStorage.getItem('cartItems')) || [],
@@ -19,10 +19,7 @@ const initCartSystem = () => {
     receipts: document.getElementById("receipts")
   };
 
-  // If no cart elements on this page, exit
-  if (!elements.cart || !elements.overlay) return;
-
-  // Initialize from localStorage
+  // list local storage
   if (elements.location && cartState.location) {
     elements.location.value = cartState.location;
   }
@@ -73,7 +70,7 @@ const initCartSystem = () => {
     });
   };
 
-  // Delivery location handler
+  // Delivery Fee
   const setupLocationHandler = () => {
     elements.location.addEventListener("change", (e) => {
       cartState.deliveryFee = parseFloat(e.target.value) || 0;
