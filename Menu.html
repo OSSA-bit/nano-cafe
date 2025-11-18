@@ -874,11 +874,12 @@
       }
 
 
-      const BASE_URL = window.location.hostname === 'localhost' ? '' : '/nano_cafe';
+      const BASE_URL = window.location.hostname === 'localhost' ? '' : '/nano-cafe';
 
       function loadPage(page) {
         const frame = document.getElementById("contentFrame");
         const fullPath = BASE_URL + '/' + page;
+        console.log('Loading:', fullPath); // Debug
         frame.src = fullPath;
 
         const buttons = document.querySelectorAll('.sidebar button');
