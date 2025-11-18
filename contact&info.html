@@ -404,99 +404,147 @@
     }
   }
 
+
   /* Mobile */
   @media (max-width: 600px) {
+    * {
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
+    }
+
     body {
-      overflow-x: hidden;
-      width: 100vw;
-      margin: 0;
-      padding: 0;
+      width: 100vw !important;
+      overflow-x: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     .main {
-      width: 100vw;
-      overflow-x: hidden;
-      display: block;
-      padding-top: 8vh;
-      transform: scale(1);
-      transform-origin: top center;
+      width: 100vw !important;
+      overflow-x: hidden !important;
+      padding-top: 8vh !important;
     }
 
     .main section:first-child {
-      width: 100vw ;
-      padding: 15vh 0 ;
-      margin: 0 ;
-      background-size: cover ;
-      background-position: center ;
-      left: 0 ;
-      right: 0 ;
+      width: 100vw !important;
+      padding: 15vh 5vw !important;
+      margin: 0 !important;
+    }
+
+    section,
+    article {
+      width: 100vw !important;
     }
 
     .main p,
     .main h1,
     .main h2 {
-      padding: 10px 5% ;
-      width: 90% ;
-      margin: 0 auto ;
-      box-sizing: border-box;
-      font-size: 0.9rem;
-      max-width: none ;
+      text-align: center;
+      justify-self: center;
     }
 
     .history,
-    .about {
-      width: 100vw ;
-      padding: 5vh 0 ;
-      margin: 0 ;
+    .about,
+    .mission-vision,
+    .review {
+      width: 100vw !important;
+      padding: 10vh 5vw !important;
+      margin: 0 !important;
+      justify-items: center;
+      text-align: center;
     }
 
-    .history>div:first-of-type,
-    .about p {
-      width: 90% ;
-      margin: 0 auto ;
-      padding: 0 5% ;
+    .history {
+      grid-template-columns: 1fr !important;
+      display: block !important;
+    }
+
+    .about {
+      grid-template-columns: 1fr !important;
+      display: block !important;
     }
 
     .mission-vision {
-      width: 100vw ;
-      padding: 10vh 0 ;
-      margin: 0 ;
-      gap: 2rem ;
-    }
-
-    .mission-vision>div {
-      width: 90% ;
-      margin: 0 auto ;
-      padding: 0 5% ;
-    }
-
-    .review {
-      width: 100vw ;
-      padding: 5vh 0 ;
-      margin: 0 ;
-    }
-
-    .text-grid {
-      width: 90% ;
-      margin: 0 auto ;
-      padding: 0 5% ;
+      grid-template-columns: 1fr !important;
+      display: block !important;
     }
 
     .map {
-      width: 90% ;
-      margin: 1rem auto ;
-      padding: 0 ;
+      width: 90%;
+      margin: 2rem auto;
+      padding: 0;
+      height: 300px;
     }
 
-    @viewport {
-      width: device-width;
-      zoom: 1.0;
-      min-zoom: 1.0;
-      max-zoom: 1.0;
-      user-zoom: fixed;
+    iframe {
+      width: 100%;
+      height: 300px;
+    }
+
+    .image-scroller {
+      overflow: visible !important;
+    }
+
+    .image-scroller img {
+      width: 180px;
+      height: 120px;
+    }
+
+    .scroll-track {
+      animation: scrollLoopMobile 40s linear infinite;
+      width: max-content !important;
+    }
+
+    @keyframes scrollLoopMobile {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-180px * 6 - 20px * 6));
+      }
+    }
+
+    .column {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    .text-grid {
+      gap: 35px;
+      padding: 15px 5%;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .column {
+      margin-bottom: 25px;
+    }
+
+    .history aside,
+    .about aside {
+      margin: 20px auto !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+
+    .history img,
+    .about img {
+      max-width: 100% !important;
+      margin: 0 auto !important;
+    }
+
+    .main section:first-child h2,
+    .main section:first-child p {
+      padding: 0 5vw !important;
+      text-align: center;
+    }
+
+    .image-scroller {
+      padding: 20px 0 !important;
     }
   }
-
 
   /* For Tab and CP touching */
   @media (hover: none) and (pointer: coarse) {
